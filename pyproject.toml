@@ -4,13 +4,36 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "twilio-workflow-engine"
-version = "0.1.0"
-description = "twilio workflow engine implementation"
+version = "1.0.0"
+description = "Declarative, resumable Twilio SMS workflows: guarded steps, hash-chained journal, retry/backoff, zero runtime dependencies"
 requires-python = ">=3.11"
 license = { text = "MIT" }
+authors = [{ name = "Retsumdk" }]
+keywords = ["twilio", "sms", "workflow", "automation", "state-machine", "messaging", "resumable"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Communications :: Telephony",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+
+[project.scripts]
+twe = "twilio_workflow.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Retsumdk/twilio-workflow-engine"
+Repository = "https://github.com/Retsumdk/twilio-workflow-engine"
+Issues = "https://github.com/Retsumdk/twilio-workflow-engine/issues"
 
 [tool.setuptools]
 package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -19,3 +42,11 @@ pythonpath = ["src"]
 [tool.ruff]
 line-length = 100
 target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["src"]

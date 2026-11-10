@@ -1,0 +1,12 @@
+twilio-workflow-engine demo
+==========================
+
+workflow: renewal-reminder (3 steps: 2 send, 1 wait)
+
+run: demo-run-01
+  step 0: send -> Hi Ada, your renewal is due on Nov 30.
+  step 1: wait -> waited 60s
+  step 2: send -> Reminder Ada: reply DONE to confirm. Ref: SM000000000000000000000001
+
+status: completed, sends: 2, sleeps: [60.0]
+final context: {"date": "Nov 30", "name": "Ada", "step_0_sid": "SM000000000000000000000001", "step_0_status": "queued", "step_2_sid": "SM000000000000000000000002", "step_2_status": "queued"}
